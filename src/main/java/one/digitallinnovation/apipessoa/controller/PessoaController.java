@@ -1,12 +1,11 @@
 package one.digitallinnovation.apipessoa.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
-
+import one.digitallinnovation.apipessoa.dto.response.MensagemResponseDTO;
+import one.digitallinnovation.apipessoa.entity.Pessoa;
+import one.digitallinnovation.apipessoa.service.PessoaService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -14,17 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 //@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PessoaController {
 
-    //private PersonService personService;
+    private PessoaService pessoaService;
 
-   // @PostMapping
-    //@ResponseStatus(HttpStatus.CREATED)
-   // public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
-    //    return personService.createPerson(personDTO);
-   // }
+    public PessoaController(PessoaService pessoaService){
+        this.pessoaService = pessoaService;
+    }
 
-    @GetMapping
-    public String getBook(){
-        return "Apir test";
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public MensagemResponseDTO criarPessoa(@RequestBody Pessoa pessoa) {
+        return pessoaService.criarPessoa(pessoa);
+    }
+
+    //@GetMapping
+   // public String getBook(){
+    //    return "Apir test";
     }
     //public List<PersonDTO> listAll() {
       //  return personService.listAll();
@@ -45,4 +48,4 @@ public class PessoaController {
    // public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
    //     personService.delete(id);
    // }
-}
+
