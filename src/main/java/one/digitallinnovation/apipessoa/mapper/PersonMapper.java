@@ -1,6 +1,6 @@
 package one.digitallinnovation.apipessoa.mapper;
 
-
+import one.digitallinnovation.apipessoa.dto.request.PessoaDTO;
 import one.digitallinnovation.apipessoa.entity.Pessoa;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,8 +11,8 @@ public interface PersonMapper {
 
     PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
 
-   // @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
-   // Pessoa toModel(PersonDTO personDTO);
+    @Mapping(target = "dataNascimento", source = "dataNascimento", dateFormat = "dd-MM-yyyy")
+    Pessoa toModel(PessoaDTO pessoaDTO);
 
-   // PersonDTO toDTO(Pessoa person);
+    PessoaDTO toDTO(Pessoa pessoa);
 }
