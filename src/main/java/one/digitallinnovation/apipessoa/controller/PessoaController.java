@@ -1,10 +1,12 @@
 package one.digitallinnovation.apipessoa.controller;
 
 
+import lombok.AllArgsConstructor;
 import one.digitallinnovation.apipessoa.dto.request.PessoaDTO;
 import one.digitallinnovation.apipessoa.dto.response.MensagemResponseDTO;
 import one.digitallinnovation.apipessoa.exception.PersonNotFoundException;
 import one.digitallinnovation.apipessoa.service.PessoaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/pessoa")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PessoaController {
 
     private PessoaService pessoaService;
-
-    public PessoaController(PessoaService pessoaService) {
-        this.pessoaService = pessoaService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
